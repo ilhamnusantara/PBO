@@ -4,13 +4,19 @@
  * and open the template in the editor.
  */
 package modul3praktikum;
-/**
- *
- * @author ilham-07010
- */
+import java.util.ArrayList;
+import java.util.Collections;
 class Elektronik extends Barang{
-    private int daya;
-    private int id;
+    int daya;
+    int id;
+    ArrayList<Elektronik> elektronik;
+
+    public Elektronik(int id, String nama, int stok, int harga,int daya) {
+        super(nama, stok, harga);
+        this.id=id;
+        this.daya=daya;
+        elektronik=new ArrayList<>();
+    }
     
     public void setDaya(int daya) {
         this.daya = daya;
@@ -27,4 +33,11 @@ class Elektronik extends Barang{
     public int getId() {
         return id;
     }
+    public void inpElektronik(int id,String nama,int stok, int harga, int daya){
+        Elektronik elektroniks = new Elektronik(id,nama, stok, harga, daya);
+        elektronik.add(elektroniks);
+    }
+    public ArrayList<Elektronik>getList(){
+        return elektronik;
+    } 
 }

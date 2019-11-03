@@ -4,14 +4,19 @@
  * and open the template in the editor.
  */
 package modul3praktikum;
+import java.util.ArrayList;
 
-/**
- *
- * @author ilham-07010
- */
 public class PecahBelah extends Barang{
-    private int ukuran;
-    private int id;
+    int ukuran;
+    int id;
+    ArrayList<PecahBelah> pecahBelah;
+
+    public PecahBelah(int id,String nama, int stok, int harga,int ukuran) {
+        super(nama, stok, harga);
+        this.id = id;
+        this.ukuran = ukuran;
+        pecahBelah = new ArrayList<>();
+    }
 
     public void setUkuran(int ukuran) {
         this.ukuran = ukuran;
@@ -28,9 +33,15 @@ public class PecahBelah extends Barang{
     public int getId() {
         return id;
     }
-
-
     
+    public void inpPecahBelah(int id,String nama, int stok, int harga, int ukuran){
+        PecahBelah pecahBelahs = new PecahBelah(id, nama, stok, harga, ukuran);
+        pecahBelah.add(pecahBelahs);
+    }
+    
+    public ArrayList<PecahBelah>getList(){
+        return pecahBelah;
+    }
     
     
 }

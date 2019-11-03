@@ -14,6 +14,11 @@ public class Barang {
     private int stok;
     private int harga;
     
+    public Barang(String nama, int stok, int harga){
+    this.nama=nama;
+    this.stok=stok;
+    this.harga=harga;    
+}
 
     public String getNama() {
         return nama;
