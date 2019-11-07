@@ -27,7 +27,7 @@ public class Barang {
     public void setNama(String nama) {
         this.nama = nama;
     }
-    
+        
 
     public int getStok() {
         return stok;
