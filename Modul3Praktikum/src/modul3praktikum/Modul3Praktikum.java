@@ -20,7 +20,7 @@ public class Modul3Praktikum {
         ArrayList<Elektronik> elektronik = new ArrayList<>();
         ArrayList<PecahBelah> pecahBelah = new ArrayList<>();
         Sort sort = new Sort();        
-        
+        int idE = 1;
         int pilih;
         do{
         System.out.println();
@@ -40,8 +40,7 @@ public class Modul3Praktikum {
                 int pilih1 = scan.nextInt();
                 switch(pilih1){
                     case 1:
-                        System.out.print("id : ");
-                        int id = scan.nextInt();
+                        System.out.println("id : "+idE);
                         System.out.print("Nama : ");
                         String nama = scan.next();
                         System.out.print("Stok barang : ");
@@ -50,11 +49,12 @@ public class Modul3Praktikum {
                         int harga = scan.nextInt();
                         System.out.print("Daya Barang(Kwh) : ");
                         int daya = scan.nextInt();
-                        elektronik.add(new Elektronik(id, nama, stok, harga, daya));
+                        elektronik.add(new Elektronik(idE,nama, stok, harga, daya));
+                        idE++;
                         break;
                     case 2:
-                        System.out.print("id : ");
-                        int idP = scan.nextInt();
+                        System.out.println("id : "+String.valueOf(pecahBelah.size()+1));
+                        String idP = String.valueOf(pecahBelah.size()+1);
                         System.out.print("Nama : ");
                         String namaP = scan.next();
                         System.out.print("Stok barang : ");
@@ -63,7 +63,7 @@ public class Modul3Praktikum {
                         int hargaP = scan.nextInt();
                         System.out.print("Daya Barang(M2) : ");
                         int dayaP = scan.nextInt();
-                        pecahBelah.add(new PecahBelah(idP, namaP, stokP, hargaP, dayaP));
+                        pecahBelah.add(new PecahBelah(idP,namaP, stokP, hargaP, dayaP));
                         break;
                 }
                 break;

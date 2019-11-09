@@ -7,9 +7,9 @@ package modul3praktikum;
 
 public class PecahBelah extends Barang{
     int ukuran;
-    int id;
+    String id;
 
-    public PecahBelah(int id,String nama, int stok, int harga,int ukuran) {
+    public PecahBelah(String id,String nama, int stok, int harga,int ukuran) {
         super(nama, stok, harga);
         this.id = id;
         this.ukuran = ukuran;
@@ -24,11 +24,11 @@ public class PecahBelah extends Barang{
         return ukuran;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
     
