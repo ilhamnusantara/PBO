@@ -57,11 +57,11 @@ public class npm06926Main {
         Pegawai pegawai =new Pegawai();
         System.out.println("ID Pegawai : "+String.valueOf(pegawaiArr.size()+1));
         pegawai.setid(pegawaiArr.size()+1);
-        System.out.println("Nama Pegawai : ");
+        System.out.print("Nama Pegawai : ");
         pegawai.setNama(scan.next());
-        System.out.println("Kata sandi Pegawai : ");
+        System.out.print("Kata sandi Pegawai : ");
         pegawai.setKataSandi(scan.next());
-        System.out.println("Nomor HP Pegawai : ");
+        System.out.print("Nomor HP Pegawai : ");
         pegawai.setNohp(scan.next());
         pegawaiArr.add(pegawai);
 }
@@ -70,10 +70,10 @@ static void tambahPelanggan(){
     Pelanggan pelanggan = new Pelanggan();
     System.out.println("ID Pelanggan : "+String.valueOf(pelangganArr.size()+1));
     pelanggan.setId(pelangganArr.size()+1);
-    System.out.println("Nama Pelanggan : ");
+    System.out.print("Nama Pelanggan : ");
     pelanggan.setNama(scan.next());
-    System.out.println("Nomor HP Pelanggan : ");
-    pelangganArr.setNohp(scan.next());
+    System.out.print("Nomor HP Pelanggan : ");
+    pelanggan.setNohp(scan.next());
     
     pelangganArr.add(pelanggan);
     
@@ -83,11 +83,11 @@ static void tambahCucian(){
     Cucian cucian = new Cucian();
     System.out.print("ID Pegawai : ");
     cucian.setPegawai(pegawaiArr.get(scan.nextInt()-1));
-    System.out.println("ID Pelanggan : ");
+    System.out.print("ID Pelanggan : ");
     cucian.setPelanggan(pelangganArr.get(scan.nextInt()-1));
-    System.out.println("Berat cucian (KG): ");
+    System.out.print("Berat cucian (KG): ");
     cucian.setBerat(scan.nextFloat());
-    System.out.println("Harga totalnya adalah : Rp."+cucian.getHargaTotal());
+    System.out.print("Harga totalnya adalah : Rp."+cucian.getHargaTotal());
     cucianArr.add(cucian);
 }
 }
