@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package View;
-
+import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ilham-07010
@@ -57,6 +58,11 @@ public class Login extends javax.swing.JFrame {
         judul.setText("SDN ITATS SENTOSA");
 
         login.setText("LOGIN");
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +88,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(login)
-                .addGap(134, 134, 134))
+                .addGap(156, 156, 156))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,6 +118,26 @@ public class Login extends javax.swing.JFrame {
     private void password1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_password1ActionPerformed
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        // TODO add your handling code here:
+        Controller.Controller.insert();
+        if(Controller.Controller.login(username1.getText(),password1.getText()).equals("guru"))
+                {
+                   Dosen d =new Dosen();
+                   d.setVisible(true);
+                }
+        else if (Controller.Controller.login(username1.getText(),password1.getText()).equals("murid"))
+        {
+            Murid m = new Murid();
+            m.setVisible(true);
+        }
+        else if (Controller.Controller.login(username1.getText(),password1.getText()).equals("gagal"))
+        {
+            JOptionPane.showMessageDialog(this, "Warning", "Login Gagal", JOptionPane.WARNING_MESSAGE);
+        }
+        setVisible(false);
+    }//GEN-LAST:event_loginActionPerformed
 
     /**
      * @param args the command line arguments
