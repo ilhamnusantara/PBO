@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Controller.Controller;
 import java.util.*;
 import javax.swing.JOptionPane;
 /**
@@ -11,12 +12,14 @@ import javax.swing.JOptionPane;
  * @author ilham-07010
  */
 public class Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login
-     */
+    
+    public String userName,passWord,nama,status;
+    public int nilaiIpa, nilaiIps, nilaiIndo;
+    static  Controller controller= new Controller();
+    
     public Login() {
         initComponents();
+        controller.setGuru();
     }
 
     /**
@@ -31,9 +34,9 @@ public class Login extends javax.swing.JFrame {
         username = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
         username1 = new javax.swing.JTextField();
-        password1 = new javax.swing.JTextField();
         judul = new javax.swing.JLabel();
         login = new javax.swing.JButton();
+        password1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 164, 75));
@@ -45,12 +48,6 @@ public class Login extends javax.swing.JFrame {
         username1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 username1ActionPerformed(evt);
-            }
-        });
-
-        password1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password1ActionPerformed(evt);
             }
         });
 
@@ -72,15 +69,13 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(username)
+                            .addComponent(password))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(password)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(password1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(username)
-                                .addGap(18, 18, 18)
-                                .addComponent(username1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(username1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(password1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(judul)))
@@ -115,28 +110,28 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_username1ActionPerformed
 
-    private void password1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_password1ActionPerformed
-
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        Controller.Controller.insert();
-        if(Controller.Controller.login(username1.getText(),password1.getText()).equals("guru"))
+//        Controller.Controller.insert(userName, passWord, nama, status, nilaiIpa, nilaiIps, nilaiIndo);
+        if(controller.login(username1.getText(),password1.getText()).equals("guru"))
                 {
                    Dosen d =new Dosen();
                    d.setVisible(true);
+                   setVisible(false);
                 }
-        else if (Controller.Controller.login(username1.getText(),password1.getText()).equals("murid"))
+        else if (controller.login(username1.getText(),password1.getText()).equals("murid"))
         {
-            Murid m = new Murid();
+            Murid m = new Murid(username1.getText(),password1.getText());
+            m.setTitle(username1.getText());
+            
             m.setVisible(true);
+            setVisible(false);
         }
-        else if (Controller.Controller.login(username1.getText(),password1.getText()).equals("gagal"))
+        else if (controller.login(username1.getText(),password1.getText()).equals("gagal"))
         {
-            JOptionPane.showMessageDialog(this, "Warning", "Login Gagal", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Login Gagal", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        setVisible(false);
+        
     }//GEN-LAST:event_loginActionPerformed
 
     /**
@@ -178,7 +173,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel judul;
     private javax.swing.JButton login;
     private javax.swing.JLabel password;
-    private javax.swing.JTextField password1;
+    private javax.swing.JPasswordField password1;
     private javax.swing.JLabel username;
     private javax.swing.JTextField username1;
     // End of variables declaration//GEN-END:variables

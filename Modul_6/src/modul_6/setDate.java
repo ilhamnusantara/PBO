@@ -10,20 +10,33 @@ import java.awt.Font;
 
 import javax.swing.*;
 
-public class setDate extends JFrame{
+public class setDate extends Modal{
     private String tanggal;
     public String textDate;
     public String formateDate;
     public JLabel text;
     public String format1;
-    setDate(){
-        
+    public String Judul;
+    public void judul(){
+        Judul = "DATE FORMATTER ";
     }
+    
+    //overload
+    public void judul(int angka){
+        angka = 46;
+        Judul = Judul + angka;
+    }
+    
+    public String JUdul(){
+        return this.Judul;
+    }
+    
     setDate(String textDate, String formateDate){
         this.textDate = textDate;
         this.formateDate=formateDate;
-        
     }
+        
+    @Override
     public void DateValue(){
         if(this.formateDate.length() < 8 && this.formateDate.length() > 8){
             this.tanggal = "Format Salah";
@@ -48,12 +61,6 @@ public class setDate extends JFrame{
         
         this.tanggal = sdf.format(date1).toString();
         System.out.println(this.tanggal);
-    }
-    public JTextField viewDate(){
-        JTextField text = new JTextField(this.tanggal);
-        text.setBounds(10, 210, 300, 22);
-        text.setFont(new Font("Times new roman", Font.BOLD, 14));
-        return text;
     }
     public String stringDate(){
         return this.tanggal;

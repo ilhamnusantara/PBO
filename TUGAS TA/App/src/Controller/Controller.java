@@ -11,54 +11,67 @@ import java.util.*;
  * @author ilham-07010
  */
 public class Controller {
-    public static void main(String[] args){
-        String text = "Belajar Pemrograman Java";
-        
-        String[] kata = text.split("");
-        
-        String text1 = kata[0];
-        String text2 = kata[1];
-        String text3 = kata[2];
-        
-        System.out.println("Text 1 = "+text1);
-        System.out.println("Text 2 = "+text2);
-        System.out.println("Text 3 = "+text3);
-    }
-    static ArrayList<User> user = new ArrayList<User>();
-    
-//    public static void insert(String nama, int umur, String status, String username, String pass)
-//    {
-//        user.add(new User("guru", "guru", "yanto", 45, "Guru"));
-//        user.add(new User("murid", "murid", "ilham", 20, "Murid"));
-//    }
-    public static void insert()
+
+   
+    public static ArrayList<User> user = new ArrayList<User>();
+    public static ArrayList<Tampung> tampung = new ArrayList<Tampung>();
+    public String nama;
+    public int nilaiIpa, nilaiIps, nilaiIndo;
+    public static void insert(String username, String password, String nama, String status, int nilaiIpa, int nilaiIps, int nilaiIndo)
     {
-        user.add(new User("guru", "guru", "yanto", 45, "Guru"));
-        user.add(new User("murid", "murid", "ilham", 20, "Murid"));
+        user.add(new User(username, password, nama, status,nilaiIpa, nilaiIps, nilaiIndo));
     }
+    
+    public static void wadah(String nama, int nilaiIpa, int nilaiIps, int nilaiIndo)
+    {
+        tampung.add(new Tampung(nama, nilaiIpa, nilaiIps, nilaiIndo));
+    }     
+    
+//    public static void guruInsert(){
+//        user.add(new User("guru", "guru", "yanto","guru",null,null,null));
+//    }
+    
+    public static void setGuru(){
+        user.add(0,new User("guru", "guru", "yanto","guru",null,null,null));
+        if(user.size() > 1){
+        for (int i = 1; i < user.size(); i++) {
+            if(user.get(0).getUsername().equals(user.get(i).getUsername())){
+               user.remove(i);
+            }
+        }
+        }
+        
+    }
+    
     public static String login(String username, String pass)
     {
+        
         String hasil = "gagal";
         for (int i = 0; i<user.size(); i++)
         {
-            if(username.equals("guru")&& pass.equals("guru"))
-            {
-                hasil = "guru";
-            }
-            else if (username.equals(user.get(i).getNama())&& pass.equals(user.get(i).getNama())&&user.get(i).getStatus().equals("Murid"))
-            {
+//            if(username.equals("guru")&& pass.equals("guru"))
+//            {
+//                hasil = "guru";
+//            }
+            if ((username == null ? user.get(i).getUsername() == null : username.equals(user.get(i).getUsername()))&& (pass == null ? user.get(i).getPassword() == null : pass.equals(user.get(i).getPassword())))
+            {   
+                if(username.equals("guru")&&pass.equals("guru")){
+                    hasil = "guru";
+                }else if(user.get(i).getStatus().equals("murid")){
+//                    System.out.println(user.size());
                 hasil = "murid";
             } 
+          }
         }
-//        if(user.equals("guru")&& pass.equals("guru"))
-//        {
-//            hasil = "guru";
-//        }
-//        else if (user.equals("murid")&& pass.equals("murid"))
-//        {
-//            hasil = "murid";
-//        }
         return hasil;
     }
     
+    public static User getSiswa(String username, String password){
+        for(int i = 0; i < user.size(); i++){
+            if((username == null ? user.get(i).getUsername() == null : username.equals(user.get(i).getUsername()))&&password == user.get(i).getPassword()){
+                return user.get(i);
+            }
+        }
+        return user.get(1);
+    }
 }

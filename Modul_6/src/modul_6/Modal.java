@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package modul_6;
 
 /**
  *
  * @author ilham-07010
  */
-public class Model {
-    
+public abstract class Modal {
+    public abstract void DateValue();
 }

@@ -12,11 +12,9 @@ package Model;
 public class Manusia {
     private String nama;
     private String status;
-    private int umur;
 
-    public Manusia(String nama, int umur, String status) {
+    public Manusia(String nama, String status) {
         this.nama = nama;
-        this.umur = umur;
         this.status = status;
     }
 
@@ -26,12 +24,10 @@ public class Manusia {
     public String getNama() {
         return nama;
     }
-
-    public int getUmur() {
-        return umur;
-    }
     
     public String getStatus() {
         return status;
     }
+
+   
 }

@@ -14,7 +14,8 @@ public class Gui extends JFrame{
     public String formateDate;
     public Gui(){
         
-        JLabel judul = new JLabel("     DATE FORMATTER");
+        setDate tanggal = new setDate(textDate, formateDate);
+        JLabel judul = new JLabel(tanggal.JUdul());
         judul.setBounds(120, 5, 300, 70);
         judul.setFont(new Font("Times new roman", Font.BOLD,20));
         add(judul);
@@ -51,10 +52,10 @@ public class Gui extends JFrame{
         result.setFont(new Font("Times new roman", Font.BOLD, 14));
         add(result);
         
-        JTextField DateLama = new JTextField("");
-        DateLama.setBounds(10, 210, 300, 22);
-        DateLama.setFont(new Font("Times new roman", Font.BOLD, 14));
-        add(DateLama);
+//        JTextField DateLama = new JTextField("");
+//        DateLama.setBounds(10, 210, 300, 22);
+//        DateLama.setFont(new Font("Times new roman", Font.BOLD, 14));
+//        add(DateLama);
 
         
         dt.addActionListener(new ActionListener(){
@@ -71,6 +72,10 @@ public class Gui extends JFrame{
 //        setVisible(false);
         setDate tanggal = new setDate(textDate, formateDate);
         tanggal.DateValue();
+        JTextField DateLama = new JTextField("");
+        DateLama.setBounds(10, 210, 300, 22);
+        DateLama.setFont(new Font("Times new roman", Font.BOLD, 14));
+        add(DateLama);
         DateLama.setText(tanggal.stringDate());
         
 }
